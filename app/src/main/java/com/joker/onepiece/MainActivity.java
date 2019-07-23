@@ -3,15 +3,32 @@ package com.joker.onepiece;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.joker.onepiece.fragment.HomeFragment;
+import com.joker.onepiece.fragment.MineFragment;
+import com.joker.onepiece.fragment.VideoFragment;
+import com.joker.onepiece.fragment.WorkFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
-    private TextView mTextMessage;
+    private HomeFragment mHomeFragment;
+
+    private WorkFragment mWorkFragment;
+
+    private VideoFragment mVideoFragment;
+
+    private MineFragment mMineFragment;
+
+    List<Fragment> arrayList;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -20,13 +37,16 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    initFragment(0);
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_video:
+                    initFragment(1);
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_work:
+                    initFragment(2);
+                    return true;
+                case 1:
+                    initFragment(3);
                     return true;
             }
             return false;
@@ -38,8 +58,83 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
+
+        if (true) {
+            navView.getMenu().add(0, 1, 1, "Mine").setIcon(R.drawable.ic_account_black_24dp);
+//            navView.getMenu().findItem(1).setIcon(R.drawable.ic_account_black_24dp);
+        }
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        mHomeFragment = new HomeFragment();
+//        mWorkFragment = new WorkFragment();
+//        mVideoFragment = new VideoFragment();
+//        mMineFragment = new MineFragment();
+//        arrayList.add(mHomeFragment);
+//        arrayList.add(mVideoFragment);
+//        arrayList.add(mWorkFragment);
+//        arrayList.add(mMineFragment);
     }
 
+
+
+    private void initFragment(int i) {
+        FragmentManager mFragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        hideFragment(fragmentTransaction);
+        switch (i) {
+            case 0:
+                if (mHomeFragment == null) {
+                    mHomeFragment = new HomeFragment();
+                    fragmentTransaction.add(R.id.body, mHomeFragment, "home");
+                } else {
+                    fragmentTransaction.show(mHomeFragment);
+                }
+                break;
+
+            case 1:
+                if (mWorkFragment == null) {
+                    mWorkFragment =  new WorkFragment();
+                    fragmentTransaction.add(R.id.body, mWorkFragment,"work");
+                } else {
+                    fragmentTransaction.show(mWorkFragment);
+                }
+                break;
+            case 2:
+                if (mVideoFragment == null) {
+                    mVideoFragment = new VideoFragment();
+                    fragmentTransaction.add(R.id.body, mVideoFragment, "video");
+                } else {
+                    fragmentTransaction.show(mVideoFragment);
+                }
+                break;
+            case 3:
+                if (mMineFragment == null) {
+                    mMineFragment = new  MineFragment();
+                    fragmentTransaction.add(R.id.body, mMineFragment,"mine");
+                } else {
+                    fragmentTransaction.show(mMineFragment);
+                }
+                break;
+            default:
+                break;
+        }
+        fragmentTransaction.commit();
+
+    }
+
+    private void hideFragment(FragmentTransaction fragmentTransaction) {
+        if (mHomeFragment != null) {
+            fragmentTransaction.hide(mHomeFragment);
+        }
+
+        if (mWorkFragment != null) {
+            fragmentTransaction.hide(mWorkFragment);
+        }
+        if (mVideoFragment != null) {
+            fragmentTransaction.hide(mVideoFragment);
+        }
+
+        if (mMineFragment != null) {
+            fragmentTransaction.hide(mMineFragment);
+        }
+    }
 }
