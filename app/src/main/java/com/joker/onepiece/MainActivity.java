@@ -61,19 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (true) {
             navView.getMenu().add(0, 1, 1, "Mine").setIcon(R.drawable.ic_account_black_24dp);
-//            navView.getMenu().findItem(1).setIcon(R.drawable.ic_account_black_24dp);
         }
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//        mHomeFragment = new HomeFragment();
-//        mWorkFragment = new WorkFragment();
-//        mVideoFragment = new VideoFragment();
-//        mMineFragment = new MineFragment();
-//        arrayList.add(mHomeFragment);
-//        arrayList.add(mVideoFragment);
-//        arrayList.add(mWorkFragment);
-//        arrayList.add(mMineFragment);
     }
-
 
 
     private void initFragment(int i) {
@@ -92,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
             case 1:
                 if (mWorkFragment == null) {
-                    mWorkFragment =  new WorkFragment();
-                    fragmentTransaction.add(R.id.body, mWorkFragment,"work");
+                    mWorkFragment = new WorkFragment();
+                    fragmentTransaction.add(R.id.body, mWorkFragment, "work");
                 } else {
                     fragmentTransaction.show(mWorkFragment);
                 }
@@ -108,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 if (mMineFragment == null) {
-                    mMineFragment = new  MineFragment();
-                    fragmentTransaction.add(R.id.body, mMineFragment,"mine");
+                    mMineFragment = new MineFragment();
+                    fragmentTransaction.add(R.id.body, mMineFragment, "mine");
                 } else {
                     fragmentTransaction.show(mMineFragment);
                 }
