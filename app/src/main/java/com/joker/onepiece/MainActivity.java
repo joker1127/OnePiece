@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
             navView.getMenu().add(0, 1, 1, "Mine").setIcon(R.drawable.ic_account_black_24dp);
         }
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        initFragment(0);
+
     }
 
 

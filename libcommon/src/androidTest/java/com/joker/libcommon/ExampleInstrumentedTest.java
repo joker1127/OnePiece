@@ -1,4 +1,4 @@
-package com.joker.jetpackcore;
+package com.joker.libcommon;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.joker.jetpackcore.test", appContext.getPackageName());
+        assertEquals("com.joker.libcommon.test", appContext.getPackageName());
     }
 }

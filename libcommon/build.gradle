@@ -30,6 +30,19 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //retrofit
+    api deps.retrofit.runtime
+    api deps.retrofit.gson
+    api deps.retrofit.adapter_rxjava2
+
+
+    // ok
+    api deps.okhttp.okhttp3
+    api deps.okhttp.okhttp3_logging_interceptor
+
+    api deps.rxjava2
+    api deps.rx_android
+
     //lifecycle
     api deps.lifecycle.runtime
     api deps.lifecycle.extensions
@@ -37,4 +50,6 @@ dependencies {
     //room
     api deps.room.runtime
     annotationProcessor deps.room.compiler
+
+
 }

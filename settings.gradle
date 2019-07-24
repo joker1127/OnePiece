@@ -1,1 +1,1 @@
-include ':app', ':jetpackcore'
+include ':app',  ':libcommon'
