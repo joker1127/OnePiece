@@ -14,6 +14,6 @@ public class HomeViewModel extends BaseViewModel<HomeRepository> {
     }
 
     public void getHomeData() {
-        mRepository.getHomeData("0", "10");
+        mRepository.getHomeData("0", "2");
     }
 }

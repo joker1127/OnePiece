@@ -2,6 +2,8 @@ package com.joker.mvvm.retrofit;
 
 import android.util.Log;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -21,12 +23,7 @@ public class RetrofitManager {
             builder.writeTimeout(30 * 1000, TimeUnit.MILLISECONDS).
                     readTimeout(30 * 1000, TimeUnit.MILLISECONDS)
                     .connectTimeout(30 * 1000, TimeUnit.MILLISECONDS);
-            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-                @Override
-                public void log(String message) {
-                    Log.i("okHttp", message);
-                }
-            });
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
 
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(loggingInterceptor);
