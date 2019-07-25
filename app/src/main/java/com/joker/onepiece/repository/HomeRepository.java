@@ -1,16 +1,17 @@
 package com.joker.onepiece.repository;
 
-import com.joker.libcommon.LatestMovie;
-import com.joker.libcommon.base.BaseRepository;
-import com.joker.libcommon.jetpack.LifecycleRepository;
+import android.util.Log;
+
+
+import com.joker.mvvm.LatestMovie;
+import com.joker.mvvm.base.BaseBean;
+import com.joker.mvvm.jetpack.LifecycleRepository;
 
 import org.reactivestreams.Publisher;
 
 import io.reactivex.Flowable;
 import io.reactivex.FlowableTransformer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.DisposableSubscriber;
 
@@ -22,14 +23,19 @@ public class HomeRepository extends LifecycleRepository {
         mHomeListObservable = apiService.getHomeData(start, count, "0df993c66c0c636e29ecbb5344252a4a");
 
         addDisposable(
-                mHomeListObservable.compose(new FlowableTransformer<LatestMovie, LatestMovie>() {
+                mHomeListObservable.compose(new FlowableTransformer<BaseBean, BaseBean>() {
                     @Override
-                    public Publisher<LatestMovie> apply(Flowable<LatestMovie> upstream) {
+                    public Publisher<BaseBean> apply(Flowable<BaseBean> upstream) {
                         return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
                     }
-                }).subscribeWith(new DisposableSubscriber<LatestMovie>() {
+                }).subscribeWith(new DisposableSubscriber<BaseBean>() {
                     @Override
-                    public void onNext(LatestMovie latestMovie) {
+                    public void onNext(BaseBean latestMovie) {
+                        if (latestMovie != null) {
+                            sendData("Home",latestMovie);
+
+                        }
+
 
                     }
 
