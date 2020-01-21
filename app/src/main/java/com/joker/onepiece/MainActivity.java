@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         initFragment(0);
 
+
+        Toast.makeText(getApplicationContext(),"哈哈哈哈 ",Toast.LENGTH_LONG).show();
     }
 
 

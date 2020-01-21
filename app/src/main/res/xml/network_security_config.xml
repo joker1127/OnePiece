@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--注意：为了适配9.0，cleartextTrafficPermitted="true" 必须有，不然需要在manifest中的Application节点添加-->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+            <!--如果需要Release被抓包，使用Android 6.0 以下的网络安全性配置 <certificates src="user" /> -->
+            <!--            <certificates src="user" />-->
+        </trust-anchors>
+    </base-config>
+    <!-- Trust user added CAs while debuggable only -->
+    <debug-overrides cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!--信任用户安装的证书-->
+            <certificates src="user" />
+            <!--系统证书-->
+            <certificates src="system" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>
