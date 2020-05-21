@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 
+import androidx.appcompat.graphics.drawable.AnimatedStateListDrawableCompat;
+
 import com.joker.mvvm.LatestMovie;
 import com.joker.mvvm.jetpack.LifecycleFragment;
 import com.joker.onepiece.R;
@@ -17,6 +19,9 @@ public class HomeFragment extends LifecycleFragment<HomeViewModel> {
     public void initView(Bundle state) {
         super.initView(state);
         getData();
+
+
+
 
     }
 

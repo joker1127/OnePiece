@@ -46,9 +46,13 @@ dependencies {
     //lifecycle
     api deps.lifecycle.runtime
     api deps.lifecycle.extensions
+    api deps.lifecycle.java8
+
     annotationProcessor deps.lifecycle.compiler
     //room
     api deps.room.runtime
+    api deps.room.rxjava2
+
     annotationProcessor deps.room.compiler
 
 }

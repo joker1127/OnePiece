@@ -74,7 +74,7 @@ dependencies {
     //注释掉原有bugly的仓库
     //compile 'com.tencent.bugly:crashreport:latest.release'//其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.3.4
     // 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
-    implementation 'com.tencent.tinker:tinker-android-lib:1.9.14'
+    implementation 'com.tencent.tinker:tinker-android-lib:1.9.14.3'
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
     implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
 

@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Toast.makeText(getApplicationContext(),"哈哈哈哈 ",Toast.LENGTH_LONG).show();
+
+//        arrayList.add(mWorkFragment);
     }
 
 
